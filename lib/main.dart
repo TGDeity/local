@@ -1,6 +1,5 @@
 // ignore_for_file: unused_import
 import 'dart:io';
-
 import 'package:ders/101/app_bar.learn.dart';
 import 'package:ders/101/button_learn.dart';
 import 'package:ders/101/card_learn.dart';
@@ -24,16 +23,11 @@ import 'package:flutter/material.dart';
 import 'package:window_size/window_size.dart';
 
 void main() {
-
-  WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowTitle('Flutter Windows App'); // Pencere başlığını ayarla
-    setWindowMinSize(const Size(360, 640)); // Minimum boyutu telefon boyutuna ayarla
-    setWindowMaxSize(const Size(360, 640)); // Maksimum boyutu da aynı yaparak sabitle
-    setWindowFrame(const Rect.fromLTWH(0, 0, 360, 640)); // Başlangıç boyutu (genişlik, yükseklik)
-  }
+  _isWindows();
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -61,5 +55,16 @@ class MyApp extends StatelessWidget {
       ),
       home: StateFullLearnView(),
     );
+  }
+}
+
+
+ _isWindows () {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowTitle('Flutter Windows App'); // Pencere başlığını ayarla
+    setWindowMinSize(const Size(360, 640)); // Minimum boyutu telefon boyutuna ayarla
+    setWindowMaxSize(const Size(360, 640)); // Maksimum boyutu da aynı yaparak sabitle
+    setWindowFrame(const Rect.fromLTWH(0, 0, 360, 640)); // Başlangıç boyutu (genişlik, yükseklik)
   }
 }
