@@ -1,7 +1,7 @@
 class LanguageItems {
 
 //GLOBAL Localazitaions için.
-////--SA
+////--SAsa
 static const welcomeTitle = "Merhaba";
 
 
