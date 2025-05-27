@@ -12,11 +12,14 @@ import 'package:ders/101/image_learn.dart';
 import 'package:ders/101/indicator_learn.dart';
 import 'package:ders/101/list_tile.learn.dart';
 import 'package:ders/101/padding_learn.dart';
+import 'package:ders/101/page_view.dart';
 import 'package:ders/101/scaffold_learn.dart';
 import 'package:ders/101/stack_learn.dart';
 import 'package:ders/101/stateful_learn.dart';
+import 'package:ders/101/statefull_life_cycle_learn.dart';
 import 'package:ders/101/stateless_learn.dart';
 import 'package:ders/101/text_learn.dart';
+import 'package:ders/101/textfiled_learn.dart';
 import 'package:ders/demos/notes_example_view.dart';
 import 'package:ders/demos/stack_demo_view.dart';
 import 'package:flutter/material.dart';
@@ -27,14 +30,11 @@ void main() {
   runApp(const MyApp());
 }
 
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         cardTheme: CardThemeData(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ), //Projedeki tüm Cardlara etki eder.
+        inputDecorationTheme: InputDecorationTheme(filled: true),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           centerTitle: true,
@@ -53,13 +54,12 @@ class MyApp extends StatelessWidget {
           // color: Colors.red
         ),
       ),
-      home: StateFullLearnView(),
+      home: TextFiledLearn(),
     );
   }
 }
 
-
- _isWindows () {
+_isWindows() {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Flutter Windows App'); // Pencere başlığını ayarla
