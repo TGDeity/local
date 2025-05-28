@@ -20,6 +20,7 @@ import 'package:ders/101/statefull_life_cycle_learn.dart';
 import 'package:ders/101/stateless_learn.dart';
 import 'package:ders/101/text_learn.dart';
 import 'package:ders/101/textfiled_learn.dart';
+import 'package:ders/demos/color_demos_view.dart';
 import 'package:ders/demos/notes_example_view.dart';
 import 'package:ders/demos/stack_demo_view.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
           // color: Colors.red
         ),
       ),
-      home: TextFiledLearn(),
+      home: ColorDemos(),
     );
   }
 }
