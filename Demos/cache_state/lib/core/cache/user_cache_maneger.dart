@@ -1,0 +1,52 @@
+import 'dart:convert';
+
+import 'package:cache_state/core/cache/exception/exceptions.dart';
+import 'package:cache_state/core/cache/shared_manager.dart';
+import 'package:cache_state/model/user_model.dart';
+
+abstract class IUserCacheManeger {
+  Future<void> init();
+  Future<bool> saveStringItems(SharedKeys key, List<User> value);
+  Future<bool> removeItem(SharedKeys key);
+  Future<List<User>?> getStringItems();
+}
+
+class UserCacheManeger implements IUserCacheManeger {
+  late final ISharedManeger? sharedPreferenceUser;
+
+  @override
+  Future<void> init() async {
+    sharedPreferenceUser = ISharedManeger();
+    sharedPreferenceUser?.init();
+  }
+
+  @override
+  Future<bool> saveStringItems(SharedKeys key, List<User> value) async {
+    try {
+      await sharedPreferenceUser?.saveStringItems(SharedKeys.users, value.map((e) => jsonEncode(e.toJson())).toList());
+      return true;
+    } catch (e) {
+      throw SaveStringException('saveStringItems: $e');
+    }
+  }
+
+  @override
+  Future<List<User>?> getStringItems() async {
+    try {
+      final data = sharedPreferenceUser?.getStringList(SharedKeys.users);
+      return data?.map((e) => User.fromJson(jsonDecode(e))).toList();
+    } catch (e) {
+      throw SaveStringException('getStringItems: $e');
+    }
+  }
+
+  @override
+  Future<bool> removeItem(SharedKeys key) async {
+    try {
+      await sharedPreferenceUser?.removeItem(key);
+      return true;
+    } catch (e) {
+      throw RemoveItemException(e.toString());
+    }
+  }
+}

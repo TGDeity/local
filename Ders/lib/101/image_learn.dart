@@ -9,22 +9,33 @@ class ImageLearnView extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          SizedBox(
-            height: 400,
-            width: 300,
-            child: Image.asset(ImageItems().appleWithBoook, fit: BoxFit.contain),
+          Flexible(
+            flex: 3,
+            child: SizedBox(
+              height: 400,
+              width: 300,
+              child: Image.asset(ImageItems().appleWithBoook, fit: BoxFit.contain),
+            ),
           ),
 
-            SizedBox(
-            height: 200,
-            width: 100,
-            child: NetworkPng(),),
+            Row(
+              children: [
+                Expanded(
+              child: SizedBox(
+              height: 200,
+              width: 100,
+              child: NetworkPng(),),
+            ),
 
-           SizedBox(
-            height: 200,
-            width: 100,
-            child: PngImage(pngPath: "elma"),
-          ),
+           Expanded(
+             child: SizedBox(
+              height: 200,
+              width: 100,
+              child: PngImage(pngPath: "elma"),
+                       ),
+           ),
+              ],
+            )
         ],
       ),
     );
@@ -55,5 +66,5 @@ class NetworkPng extends StatelessWidget {
     ,errorBuilder: (context, error, stackTrace) =>  CircularProgressIndicator() ,);
   }
 
-  String get _nameWithPath => "htts://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png";
+  String get _nameWithPath => "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png";
 }
