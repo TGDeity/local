@@ -1,0 +1,71 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'resoruce_model.g.dart';
+
+@JsonSerializable(
+  createToJson: true,
+)
+class ResourceModel {
+  List<Data>? data;
+
+  ResourceModel({this.data});
+
+  factory ResourceModel.fromJson(Map<String, dynamic> json) {
+    return _$ResourceModelFromJson(json);
+    /* if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(Data.fromJson(v));
+      });
+    }*/
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$ResourceModelToJson(this);
+
+    /* final Map<String, dynamic> data = {};
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;*/
+  }
+}
+
+@JsonSerializable(
+  createToJson: false, // TODO bir servise istek atılmayacaksa false çek.
+  //fieldRename: FieldRename.snake, nameTg servisten gelen keyleri parse ederken snake case yapar.
+)
+class Data {
+  final int? id;
+  final String? name;
+  final int? year;
+  @JsonKey(name: 'color') // örneğin servisten color renk olarak türkçe gelmiş ancak bunu bu şekile parse etmek istemiyor sadece kendi istediğini parse etmek istiyorssan kullanılabilir.  örneğin renk => colorx 'a dönüşüyor.
+  final String? colorx;
+  final String? pantoneValue;
+  final String? pricex;
+
+  Data({this.id, this.name, this.year, this.colorx, this.pantoneValue, this.pricex, required status});
+
+  factory Data.fromJson(Map<String, dynamic> json) {
+    return _$DataFromJson(json);
+
+    /* id = json['id'];
+    name = json['name'];
+    year = json['year'];
+    color = json['color'];
+    pantoneValue = json['pantone_value'];*/
+  }
+
+Map<String, dynamic> toJson() {
+    return _$DataToJson(this);
+
+    /*final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['year'] = year;
+    data['color'] = color;
+    data['pantone_value'] = pantoneValue;
+    return data;*/
+  }
+  
+}

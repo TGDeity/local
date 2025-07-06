@@ -1,0 +1,9 @@
+{
+    "login":{
+        "login": "Login  LOCALİZATİONS1",
+        "welcome":"Login Welcome"
+    },
+    "button":{
+        "send": "Send"
+    }
+}
